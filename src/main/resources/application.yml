@@ -1,0 +1,24 @@
+# application.yml
+server:
+  port: 8080  # Choose a port for the IAM service
+
+jwt:
+  expiration: 86400000  # Token expiration time in milliseconds
+  secret-string: 5fe4dbb5bc12461881a478817442470347e0038ecc0f4054ac0456f1ac7fe040 # We need to store Credhub/Keyvault
+
+basicauth:
+  config:
+    - username: broker
+      role: ADMIN
+      password: admin  # We need to store Credhub/Keyvault
+    - username: leasing-company
+      role: ADMIN
+      password: admin  # We need to store Credhub/Keyvault
+
+springdoc:
+  swagger-ui:
+    path: /sogeti-iam-documentation
+    tryItOutEnabled: true
+    filter: true
+  api-docs.path: /sogeti-iam-api-docs
+  packages-to-scan: com.sogeti.iamservice.controller
